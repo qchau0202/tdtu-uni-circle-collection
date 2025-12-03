@@ -1,7 +1,7 @@
 {
-  "name": "study-service",
+  "name": "collection-service",
   "version": "1.0.0",
-  "description": "Study microservice with ExpressJS and Supabase",
+  "description": "Collection microservice with ExpressJS and Supabase",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -22,7 +22,9 @@
     "express-rate-limit": "^7.1.5",
     "cors": "^2.8.5",
     "helmet": "^7.1.0",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

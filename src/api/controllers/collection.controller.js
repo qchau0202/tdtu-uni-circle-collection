@@ -1,11 +1,11 @@
 const { getSupabaseClient } = require('../../infrastructure/database/supabase');
 
-const getAllStudySessions = async (req, res, next) => {
+const getAllCollections = async (req, res, next) => {
   try {
     const supabase = getSupabaseClient();
-    
+
     const { data, error } = await supabase
-      .from('study_sessions')
+      .from('study_session')
       .select('*');
 
     if (error) {
@@ -18,20 +18,20 @@ const getAllStudySessions = async (req, res, next) => {
     }
 
     res.status(200).json({
-      studySessions: data
+      collections: data
     });
   } catch (error) {
     next(error);
   }
 };
 
-const getStudySessionById = async (req, res, next) => {
+const getCollectionById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const supabase = getSupabaseClient();
-    
+
     const { data, error } = await supabase
-      .from('study_sessions')
+      .from('study_session')
       .select('*')
       .eq('id', id)
       .single();
@@ -39,28 +39,28 @@ const getStudySessionById = async (req, res, next) => {
     if (error) {
       return res.status(404).json({
         error: {
-          message: 'Study session not found',
+          message: 'Collection not found',
           status: 404
         }
       });
     }
 
     res.status(200).json({
-      studySession: data
+      collection: data
     });
   } catch (error) {
     next(error);
   }
 };
 
-const createStudySession = async (req, res, next) => {
+const createCollection = async (req, res, next) => {
   try {
-    const studySessionData = req.body;
+    const collectionData = req.body;
     const supabase = getSupabaseClient();
-    
+
     const { data, error } = await supabase
-      .from('study_sessions')
-      .insert([studySessionData])
+      .from('study_session')
+      .insert([collectionData])
       .select();
 
     if (error) {
@@ -73,23 +73,23 @@ const createStudySession = async (req, res, next) => {
     }
 
     res.status(201).json({
-      message: 'Study session created successfully',
-      studySession: data[0]
+      message: 'Collection created successfully',
+      collection: data[0]
     });
   } catch (error) {
     next(error);
   }
 };
 
-const updateStudySession = async (req, res, next) => {
+const updateCollection = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const studySessionData = req.body;
+    const collectionData = req.body;
     const supabase = getSupabaseClient();
-    
+
     const { data, error } = await supabase
-      .from('study_sessions')
-      .update(studySessionData)
+      .from('study_session')
+      .update(collectionData)
       .eq('id', id)
       .select();
 
@@ -103,21 +103,21 @@ const updateStudySession = async (req, res, next) => {
     }
 
     res.status(200).json({
-      message: 'Study session updated successfully',
-      studySession: data[0]
+      message: 'Collection updated successfully',
+      collection: data[0]
     });
   } catch (error) {
     next(error);
   }
 };
 
-const deleteStudySession = async (req, res, next) => {
+const deleteCollection = async (req, res, next) => {
   try {
     const { id } = req.params;
     const supabase = getSupabaseClient();
-    
+
     const { error } = await supabase
-      .from('study_sessions')
+      .from('study_session')
       .delete()
       .eq('id', id);
 
@@ -131,7 +131,7 @@ const deleteStudySession = async (req, res, next) => {
     }
 
     res.status(200).json({
-      message: 'Study session deleted successfully'
+      message: 'Collection deleted successfully'
     });
   } catch (error) {
     next(error);
@@ -139,9 +139,9 @@ const deleteStudySession = async (req, res, next) => {
 };
 
 module.exports = {
-  getAllStudySessions,
-  getStudySessionById,
-  createStudySession,
-  updateStudySession,
-  deleteStudySession
+  getAllCollections,
+  getCollectionById,
+  createCollection,
+  updateCollection,
+  deleteCollection
 };
