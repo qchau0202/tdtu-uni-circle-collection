@@ -33,7 +33,8 @@ app.get('/health', (req, res) => {
 });
 
 // Routes
-app.use('/api/collection', collectionRoutes);
+// Mount collection routes under the plural /api/collections to match the frontend
+app.use('/api/collections', collectionRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
