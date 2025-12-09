@@ -155,9 +155,9 @@ const collectionController = require('../controllers/collection_controller');
 
 /**
  * @swagger
- * /:
+ * /api/collection:
  *   get:
- *     summary: Get all collections
+ *     summary: Get all collection
  *     description: Retrieve a list of collections with optional filtering by visibility, tags, scope, and search
  *     tags: [Collections]
  *     parameters:
@@ -225,7 +225,7 @@ router.get('/', collectionController.getAllCollections);
 
 /**
  * @swagger
- * /{id}:
+ * /api/collection/{id}:
  *   get:
  *     summary: Get collection by ID
  *     description: Retrieve detailed information about a specific collection
@@ -285,9 +285,9 @@ router.get('/:id', collectionController.getCollectionById);
 
 /**
  * @swagger
- * /:
+ * /api/collection:
  *   post:
- *     summary: Create a new collection
+ *     summary: Create new collection
  *     description: Create a new collection (requires authentication)
  *     tags: [Collections]
  *     security:
@@ -365,7 +365,7 @@ router.post('/', collectionController.createCollection);
 
 /**
  * @swagger
- * /{id}:
+ * /api/collection/{id}:
  *   put:
  *     summary: Update a collection
  *     description: Update an existing collection (requires authentication and ownership)
@@ -462,7 +462,7 @@ router.put('/:id', collectionController.updateCollection);
 
 /**
  * @swagger
- * /{id}:
+ * /api/collection/{id}:
  *   delete:
  *     summary: Delete a collection
  *     description: Delete an existing collection (requires authentication and ownership)

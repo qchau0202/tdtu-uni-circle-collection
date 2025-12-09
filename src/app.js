@@ -33,7 +33,7 @@ app.get('/health', (req, res) => {
 });
 
 // Routes
-app.use('/api/collections', collectionRoutes);
+app.use('/api/collection', collectionRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
